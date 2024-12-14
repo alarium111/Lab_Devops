@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-devops
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx-devops #<<< направляем трафик на все поды выбранные этим селектором
+  ports:
+  - port: 12345 #<<< внешний порт сервиса
+    targetPort: 80 #<<< порт пода
+  externalIPs:
+  - 10.0.2.15
